@@ -1,6 +1,6 @@
 {
   "name": "rehype-mdx-title",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A rehype MDX plugin for exposing the page title",
   "main": "dist/index.js",
   "author": "Remco Haszing <remcohaszing@gmail.com>",
