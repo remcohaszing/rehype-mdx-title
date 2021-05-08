@@ -57,12 +57,12 @@ test('combine with rehype-raw', (t) => {
     ),
     `/*@jsxRuntime automatic @jsxImportSource react*/
 export const title = "Hello World!";
-function MDXContent(_props) {
+function MDXContent(props) {
   const _components = Object.assign({
     h1: "h1",
     span: "span"
-  }, _props.components), {wrapper: MDXLayout} = _components;
-  const _content = <><_components.h1>{"Hello "}<_components.span>{"World!"}</_components.span></_components.h1></>;\n  return MDXLayout ? <MDXLayout {..._props}>{_content}</MDXLayout> : _content;
+  }, props.components), {wrapper: MDXLayout} = _components;
+  const _content = <><_components.h1>{"Hello "}<_components.span>{"World!"}</_components.span></_components.h1></>;\n  return MDXLayout ? <MDXLayout {...props}>{_content}</MDXLayout> : _content;
 }
 export default MDXContent;
 `,
