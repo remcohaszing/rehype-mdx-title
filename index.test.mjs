@@ -2,16 +2,16 @@ import { promises as fs, readdirSync } from 'fs';
 import { createRequire } from 'module';
 import { join } from 'path';
 
+import { compile, compileSync } from '@mdx-js/mdx';
 import rehypeRaw from 'rehype-raw';
 import test from 'tape';
 import toVfile from 'to-vfile';
-import { compile, compileSync } from 'xdm';
 
 const { rehypeMdxTitle } = createRequire(import.meta.url)('./src/index.ts');
 
 const tests = readdirSync('__fixtures__');
 
-tests.forEach((name) => {
+for (const name of tests) {
   test(name, async (t) => {
     const path = join('__fixtures__', name);
     let input;
@@ -22,17 +22,17 @@ tests.forEach((name) => {
     }
     const expected = join(path, 'expected.jsx');
     const options = JSON.parse(await fs.readFile(join(path, 'options.json')));
-    const { contents } = await compile(input, {
+    const { value } = await compile(input, {
       rehypePlugins: [[rehypeMdxTitle, options]],
       jsx: true,
     });
     if (process.argv.includes('--write')) {
-      await fs.writeFile(expected, contents);
+      await fs.writeFile(expected, value);
     }
-    t.equal(contents, await fs.readFile(expected, 'utf8'));
+    t.equal(value, await fs.readFile(expected, 'utf8'));
     t.end();
   });
-});
+}
 
 test('invalid name', (t) => {
   t.throws(
@@ -57,7 +57,7 @@ test('combine with rehype-raw', (t) => {
     ),
     `/*@jsxRuntime automatic @jsxImportSource react*/
 export const title = "Hello World!";
-function MDXContent(props) {
+function MDXContent(props = {}) {
   const _components = Object.assign({
     h1: "h1",
     span: "span"

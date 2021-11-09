@@ -1,6 +1,6 @@
 /*@jsxRuntime automatic @jsxImportSource react*/
 export const title = "strong, code, emphasis, and links";
-function MDXContent(props) {
+function MDXContent(props = {}) {
   const _components = Object.assign({
     h1: "h1",
     strong: "strong",

@@ -1,5 +1,5 @@
 /*@jsxRuntime automatic @jsxImportSource react*/
-function MDXContent(props) {
+function MDXContent(props = {}) {
   const _components = Object.assign({
     h2: "h2"
   }, props.components), {wrapper: MDXLayout} = _components;
