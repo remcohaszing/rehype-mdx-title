@@ -6,7 +6,7 @@ import { Attacher } from 'unified';
 import { Parent } from 'unist';
 import * as visit from 'unist-util-visit';
 
-export interface RemarkMdxTttleOptions {
+export interface RemarkMdxTitleOptions {
   /**
    * The variable to export the title as.
    *
@@ -21,7 +21,7 @@ export interface RemarkMdxTttleOptions {
  * @param options - Optional options to configure the output.
  * @returns A unified transformer.
  */
-export const rehypeMdxTitle: Attacher<[RemarkMdxTttleOptions?]> = ({ name = 'title' } = {}) => {
+export const rehypeMdxTitle: Attacher<[RemarkMdxTitleOptions?]> = ({ name = 'title' } = {}) => {
   if (!isIdentifierName(name)) {
     throw new Error(`The name should be a valid identifier name, got: ${JSON.stringify(name)}`);
   }
