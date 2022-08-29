@@ -79,3 +79,7 @@ component output.
 #### `name`
 
 The name of the variable to export the title as. (default: `'title'`)
+
+## License
+
+[MIT](LICENSE.md) © [Remco Haszing](https://github.com/remcohaszing)
