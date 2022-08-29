@@ -3,7 +3,7 @@ import process from 'process';
 
 import { compile, compileSync } from '@mdx-js/mdx';
 import rehypeRaw from 'rehype-raw';
-import { toVFile } from 'to-vfile';
+import { read } from 'to-vfile';
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
 
@@ -17,9 +17,9 @@ for (const name of tests) {
     const path = new URL(`${name}/`, fixtureDir);
     let input;
     try {
-      input = await toVFile.read(new URL('input.mdx', path));
+      input = await read(new URL('input.mdx', path));
     } catch {
-      input = await toVFile.read(new URL('input.md', path));
+      input = await read(new URL('input.md', path));
     }
     const expected = new URL('expected.jsx', path);
     const options = JSON.parse(await readFile(new URL('options.json', path), 'utf8'));
