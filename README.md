@@ -35,11 +35,11 @@ import { readFile } from 'fs/promises';
 import { compile } from '@mdx-js/mdx';
 import rehypeMdxTitle from 'rehype-mdx-title';
 
-const { contents } = await compile(await readFile('example.mdx'), {
+const { value } = await compile(await readFile('example.mdx'), {
   jsx: true,
   rehypePlugins: [rehypeMdxTitle],
 });
-console.log(contents);
+console.log(value);
 ```
 
 Roughly yields:
