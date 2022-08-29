@@ -20,7 +20,7 @@ export interface RemarkMdxTitleOptions {
  * @param options Optional options to configure the output.
  * @returns A unified transformer.
  */
-export const rehypeMdxTitle: Plugin<[RemarkMdxTitleOptions?], Root> = ({ name = 'title' } = {}) => {
+const rehypeMdxTitle: Plugin<[RemarkMdxTitleOptions?], Root> = ({ name = 'title' } = {}) => {
   if (!isIdentifierName(name)) {
     throw new Error(`The name should be a valid identifier name, got: ${JSON.stringify(name)}`);
   }
@@ -65,3 +65,5 @@ export const rehypeMdxTitle: Plugin<[RemarkMdxTitleOptions?], Root> = ({ name = 
     });
   };
 };
+
+export default rehypeMdxTitle;

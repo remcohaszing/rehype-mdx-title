@@ -7,7 +7,7 @@ import { read } from 'to-vfile';
 import { test } from 'uvu';
 import * as assert from 'uvu/assert';
 
-import { rehypeMdxTitle } from './index.js';
+import rehypeMdxTitle from './index.js';
 
 const fixtureDir = new URL('__fixtures__/', import.meta.url);
 const tests = await readdir(fixtureDir);

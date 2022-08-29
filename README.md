@@ -33,7 +33,7 @@ The following script:
 import { readFileSync } from 'fs';
 
 import { compileSync } from '@mdx-js/mdx';
-import { rehypeMdxTitle } from 'rehype-mdx-title';
+import rehypeMdxTitle from 'rehype-mdx-title';
 
 const { contents } = compileSync(readFileSync('example.mdx'), {
   jsx: true,
