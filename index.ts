@@ -1,10 +1,9 @@
-import { Program } from 'estree';
 import { name as isIdentifierName } from 'estree-util-is-identifier-name';
-import { Element } from 'hast';
-import * as toString from 'hast-util-to-string';
-import { Attacher } from 'unified';
-import { Parent } from 'unist';
-import * as visit from 'unist-util-visit';
+import { Element, Root } from 'hast';
+import { toString } from 'hast-util-to-string';
+import { MdxjsEsm } from 'mdast-util-mdx';
+import { Plugin } from 'unified';
+import { EXIT, visit } from 'unist-util-visit';
 
 export interface RemarkMdxTitleOptions {
   /**
@@ -18,20 +17,21 @@ export interface RemarkMdxTitleOptions {
 /**
  * A rehype plugin to expose the MDX page title as string.
  *
- * @param options - Optional options to configure the output.
+ * @param options Optional options to configure the output.
  * @returns A unified transformer.
  */
-export const rehypeMdxTitle: Attacher<[RemarkMdxTitleOptions?]> = ({ name = 'title' } = {}) => {
+export const rehypeMdxTitle: Plugin<[RemarkMdxTitleOptions?], Root> = ({ name = 'title' } = {}) => {
   if (!isIdentifierName(name)) {
     throw new Error(`The name should be a valid identifier name, got: ${JSON.stringify(name)}`);
   }
 
   return (ast) => {
-    visit<Element>(ast, { type: 'element', tagName: 'h1' }, (node) => {
+    visit(ast, { type: 'element', tagName: 'h1' }, (node: Element) => {
       const value = toString(node);
 
-      (ast as Parent).children.unshift({
+      ast.children.unshift({
         type: 'mdxjsEsm',
+        value: '',
         data: {
           estree: {
             type: 'Program',
@@ -58,10 +58,10 @@ export const rehypeMdxTitle: Attacher<[RemarkMdxTitleOptions?]> = ({ name = 'tit
                 },
               },
             ],
-          } as Program,
+          },
         },
-      });
-      return visit.EXIT;
+      } as MdxjsEsm);
+      return EXIT;
     });
   };
 };
