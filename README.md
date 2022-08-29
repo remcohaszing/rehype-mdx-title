@@ -2,6 +2,7 @@
 
 [![github actions](https://github.com/remcohaszing/rehype-mdx-title/actions/workflows/ci.yml/badge.svg)](https://github.com/remcohaszing/rehype-mdx-title/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/rehype-mdx-title)](https://www.npmjs.com/package/rehype-mdx-title)
+[![codecov](https://codecov.io/gh/remcohaszing/rehype-mdx-title/branch/main/graph/badge.svg)](https://codecov.io/gh/remcohaszing/rehype-mdx-title)
 [![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io)
 
 A [rehype](https://github.com/rehypejs/rehype) MDX plugin for exposing the page title
