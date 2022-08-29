@@ -31,8 +31,8 @@ The following script:
 ```js
 import { readFileSync } from 'fs';
 
+import { compileSync } from '@mdx-js/mdx';
 import { rehypeMdxTitle } from 'rehype-mdx-title';
-import { compileSync } from 'xdm';
 
 const { contents } = compileSync(readFileSync('example.mdx'), {
   jsx: true,
@@ -71,7 +71,7 @@ export default function MDXContent() {
 ```
 
 Use [`rehype-raw`](https://github.com/rehypejs/rehype-raw) if you wish to use custom `<h1>` headers.
-This only works if the xdm `format` option is set to `'md'`. Beware this also changes the MDX
+This only works if the MDX `format` option is set to `'md'`. Beware this also changes the MDX
 component output.
 
 ### Options
