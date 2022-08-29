@@ -30,12 +30,12 @@ For example, given a file named `example.mdx` with the following contents:
 The following script:
 
 ```js
-import { readFileSync } from 'fs';
+import { readFile } from 'fs/promises';
 
-import { compileSync } from '@mdx-js/mdx';
+import { compile } from '@mdx-js/mdx';
 import rehypeMdxTitle from 'rehype-mdx-title';
 
-const { contents } = compileSync(readFileSync('example.mdx'), {
+const { contents } = await compile(await readFile('example.mdx'), {
   jsx: true,
   rehypePlugins: [rehypeMdxTitle],
 });
