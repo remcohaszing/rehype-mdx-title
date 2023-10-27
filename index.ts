@@ -1,8 +1,8 @@
-import { name as isIdentifierName } from 'estree-util-is-identifier-name';
-import { type Root } from 'hast';
-import { toString } from 'hast-util-to-string';
-import { type Plugin } from 'unified';
-import { EXIT, visitParents } from 'unist-util-visit-parents';
+import { name as isIdentifierName } from 'estree-util-is-identifier-name'
+import { type Root } from 'hast'
+import { toString } from 'hast-util-to-string'
+import { type Plugin } from 'unified'
+import { EXIT, visitParents } from 'unist-util-visit-parents'
 
 export interface RemarkMdxTitleOptions {
   /**
@@ -10,7 +10,7 @@ export interface RemarkMdxTitleOptions {
    *
    * @default title
    */
-  name?: string;
+  name?: string
 }
 
 /**
@@ -21,12 +21,12 @@ export interface RemarkMdxTitleOptions {
  */
 const rehypeMdxTitle: Plugin<[RemarkMdxTitleOptions?], Root> = ({ name = 'title' } = {}) => {
   if (!isIdentifierName(name)) {
-    throw new Error(`The name should be a valid identifier name, got: ${JSON.stringify(name)}`);
+    throw new Error(`The name should be a valid identifier name, got: ${JSON.stringify(name)}`)
   }
 
   return (ast) => {
     visitParents(ast, { type: 'element', tagName: 'h1' }, (node) => {
-      const value = toString(node);
+      const value = toString(node)
 
       ast.children.unshift({
         type: 'mdxjsEsm',
@@ -47,18 +47,18 @@ const rehypeMdxTitle: Plugin<[RemarkMdxTitleOptions?], Root> = ({ name = 'title'
                     {
                       type: 'VariableDeclarator',
                       id: { type: 'Identifier', name },
-                      init: { type: 'Literal', value },
-                    },
-                  ],
-                },
-              },
-            ],
-          },
-        },
-      });
-      return EXIT;
-    });
-  };
-};
+                      init: { type: 'Literal', value }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      })
+      return EXIT
+    })
+  }
+}
 
-export default rehypeMdxTitle;
+export default rehypeMdxTitle

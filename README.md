@@ -39,22 +39,22 @@ For example, given a file named `example.mdx` with the following contents:
 The following script:
 
 ```js
-import { readFile } from 'node:fs/promises';
+import { readFile } from 'node:fs/promises'
 
-import { compile } from '@mdx-js/mdx';
-import rehypeMdxTitle from 'rehype-mdx-title';
+import { compile } from '@mdx-js/mdx'
+import rehypeMdxTitle from 'rehype-mdx-title'
 
 const { value } = await compile(await readFile('example.mdx'), {
   jsx: true,
-  rehypePlugins: [rehypeMdxTitle],
-});
-console.log(value);
+  rehypePlugins: [rehypeMdxTitle]
+})
+console.log(value)
 ```
 
 Roughly yields:
 
 ```jsx
-export const title = 'The answer to life, the universe, and everything';
+export const title = 'The answer to life, the universe, and everything'
 
 export default function MDXContent() {
   return (
@@ -76,7 +76,7 @@ export default function MDXContent() {
         {' is 42'}
       </p>
     </>
-  );
+  )
 }
 ```
 
