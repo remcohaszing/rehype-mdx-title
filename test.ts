@@ -8,7 +8,7 @@ import { read } from 'to-vfile';
 
 import rehypeMdxTitle from './index.js';
 
-const fixtureDir = new URL('__fixtures__/', import.meta.url);
+const fixtureDir = new URL('fixtures/', import.meta.url);
 const tests = await readdir(fixtureDir);
 
 for (const name of tests) {
