@@ -47,11 +47,7 @@ const rehypeMdxTitle: Plugin<[RemarkMdxTitleOptions?], Root> = ({ name = 'title'
                     {
                       type: 'VariableDeclarator',
                       id: { type: 'Identifier', name },
-                      init: {
-                        type: 'Literal',
-                        value,
-                        raw: JSON.stringify(value),
-                      },
+                      init: { type: 'Literal', value },
                     },
                   ],
                 },
