@@ -6,13 +6,8 @@
   "type": "module",
   "author": "Remco Haszing <remcohaszing@gmail.com>",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/remcohaszing/rehype-mdx-title.git"
-  },
-  "bugs": {
-    "url": "https://github.com/remcohaszing/rehype-mdx-title/issues"
-  },
+  "repository": "remcohaszing/rehype-mdx-title",
+  "bugs": "https://github.com/remcohaszing/rehype-mdx-title/issues",
   "homepage": "https://github.com/remcohaszing/rehype-mdx-title#readme",
   "funding": "https://github.com/sponsors/remcohaszing",
   "keywords": [
