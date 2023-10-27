@@ -1,8 +1,8 @@
 import { name as isIdentifierName } from 'estree-util-is-identifier-name';
-import { type Element, type Root } from 'hast';
+import { type Root } from 'hast';
 import { toString } from 'hast-util-to-string';
 import { type Plugin } from 'unified';
-import { EXIT, visit } from 'unist-util-visit';
+import { EXIT, visitParents } from 'unist-util-visit-parents';
 
 export interface RemarkMdxTitleOptions {
   /**
@@ -25,7 +25,7 @@ const rehypeMdxTitle: Plugin<[RemarkMdxTitleOptions?], Root> = ({ name = 'title'
   }
 
   return (ast) => {
-    visit(ast, { type: 'element', tagName: 'h1' }, (node: Element) => {
+    visitParents(ast, { type: 'element', tagName: 'h1' }, (node) => {
       const value = toString(node);
 
       ast.children.unshift({

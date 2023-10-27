@@ -33,7 +33,7 @@
     "estree-util-is-identifier-name": "^3.0.0",
     "hast-util-to-string": "^3.0.0",
     "unified": "^11.0.0",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit-parents": "^6.0.0"
   },
   "devDependencies": {
     "@mdx-js/mdx": "^3.0.0",
