@@ -1,11 +1,10 @@
-import { readdir, readFile, writeFile } from 'fs/promises';
-import process from 'process';
+import assert from 'node:assert/strict';
+import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { test } from 'node:test';
 
 import { compile, compileSync } from '@mdx-js/mdx';
 import rehypeRaw from 'rehype-raw';
 import { read } from 'to-vfile';
-import { test } from 'uvu';
-import * as assert from 'uvu/assert';
 
 import rehypeMdxTitle from './index.js';
 
@@ -41,7 +40,7 @@ test('invalid name', () => {
         rehypePlugins: [[rehypeMdxTitle, { name: 'Not valid' }]],
         jsx: true,
       }),
-    'The name should be a valid identifier name, got: "Not valid"',
+    new Error('The name should be a valid identifier name, got: "Not valid"'),
   );
 });
 
@@ -57,19 +56,17 @@ test('combine with rehype-raw', () => {
     `/*@jsxRuntime automatic @jsxImportSource react*/
 export const title = "Hello World!";
 function _createMdxContent(props) {
-  const _components = Object.assign({
+  const _components = {
     h1: "h1",
-    span: "span"
-  }, props.components);
+    span: "span",
+    ...props.components
+  };
   return <_components.h1>{"Hello "}<_components.span>{"World!"}</_components.span></_components.h1>;
 }
-function MDXContent(props = {}) {
+export default function MDXContent(props = {}) {
   const {wrapper: MDXLayout} = props.components || ({});
   return MDXLayout ? <MDXLayout {...props}><_createMdxContent {...props} /></MDXLayout> : _createMdxContent(props);
 }
-export default MDXContent;
 `,
   );
 });
-
-test.run();

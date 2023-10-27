@@ -1,8 +1,7 @@
 import { name as isIdentifierName } from 'estree-util-is-identifier-name';
-import { Element, Root } from 'hast';
+import { type Element, type Root } from 'hast';
 import { toString } from 'hast-util-to-string';
-import { MdxjsEsm } from 'mdast-util-mdx';
-import { Plugin } from 'unified';
+import { type Plugin } from 'unified';
 import { EXIT, visit } from 'unist-util-visit';
 
 export interface RemarkMdxTitleOptions {
@@ -60,7 +59,7 @@ const rehypeMdxTitle: Plugin<[RemarkMdxTitleOptions?], Root> = ({ name = 'title'
             ],
           },
         },
-      } as MdxjsEsm);
+      });
       return EXIT;
     });
   };

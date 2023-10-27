@@ -1,6 +1,6 @@
 root: true
 extends:
   - remcohaszing
+  - remcohaszing/typechecking
 rules:
-  no-loop-func: off
-  import/no-extraneous-dependencies: off
+  '@typescript-eslint/no-unsafe-assignment': off

@@ -30,7 +30,7 @@ For example, given a file named `example.mdx` with the following contents:
 The following script:
 
 ```js
-import { readFile } from 'fs/promises';
+import { readFile } from 'node:fs/promises';
 
 import { compile } from '@mdx-js/mdx';
 import rehypeMdxTitle from 'rehype-mdx-title';
@@ -80,6 +80,10 @@ component output.
 #### `name`
 
 The name of the variable to export the title as. (default: `'title'`)
+
+## Compatibility
+
+This project is compatible with Node.js 16 or greater.
 
 ## License
 
