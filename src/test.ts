@@ -3,12 +3,11 @@ import { readdir, readFile, writeFile } from 'node:fs/promises'
 import { test } from 'node:test'
 
 import { compile, compileSync } from '@mdx-js/mdx'
+import rehypeMdxTitle from 'rehype-mdx-title'
 import rehypeRaw from 'rehype-raw'
 import { read } from 'to-vfile'
 
-import rehypeMdxTitle from './index.js'
-
-const fixtureDir = new URL('fixtures/', import.meta.url)
+const fixtureDir = new URL('../fixtures/', import.meta.url)
 const tests = await readdir(fixtureDir)
 
 for (const name of tests) {

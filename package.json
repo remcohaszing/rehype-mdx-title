@@ -2,7 +2,8 @@
   "name": "rehype-mdx-title",
   "version": "3.0.0",
   "description": "A rehype MDX plugin for exposing the page title",
-  "exports": "./index.js",
+  "main": "./dist/rehype-mdx-title.js",
+  "exports": "./dist/rehype-mdx-title.js",
   "type": "module",
   "author": "Remco Haszing <remcohaszing@gmail.com>",
   "license": "MIT",
@@ -20,13 +21,14 @@
     "unified"
   ],
   "files": [
-    "index.js",
-    "index.d.ts"
+    "dist",
+    "src",
+    "!test*"
   ],
   "scripts": {
-    "prepack": "tsc --noEmit false",
-    "test": "c8 tsx test.ts",
-    "start": "tsx watch test.ts"
+    "prepack": "tsc --build",
+    "pretest": "tsc --build",
+    "test": "c8 node --enable-source-maps dist/test.js"
   },
   "dependencies": {
     "@types/hast": "^3.0.0",
@@ -48,7 +50,6 @@
     "remark-cli": "^11.0.0",
     "remark-preset-remcohaszing": "^2.0.0",
     "to-vfile": "^8.0.0",
-    "tsx": "^3.0.0",
     "typescript": "^5.0.0"
   }
 }
