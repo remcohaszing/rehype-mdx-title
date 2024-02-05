@@ -1,6 +1,6 @@
 # rehype-mdx-title
 
-[![github actions](https://github.com/remcohaszing/rehype-mdx-title/actions/workflows/ci.yml/badge.svg)](https://github.com/remcohaszing/rehype-mdx-title/actions/workflows/ci.yml)
+[![github actions](https://github.com/remcohaszing/rehype-mdx-title/actions/workflows/ci.yaml/badge.svg)](https://github.com/remcohaszing/rehype-mdx-title/actions/workflows/ci.yaml)
 [![codecov](https://codecov.io/gh/remcohaszing/rehype-mdx-title/branch/main/graph/badge.svg)](https://codecov.io/gh/remcohaszing/rehype-mdx-title)
 [![npm version](https://img.shields.io/npm/v/rehype-mdx-title)](https://www.npmjs.com/package/rehype-mdx-title)
 [![npm downloads](https://img.shields.io/npm/dm/rehype-mdx-title)](https://www.npmjs.com/package/rehype-mdx-title)
