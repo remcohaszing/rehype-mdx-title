@@ -11,6 +11,7 @@ A [rehype](https://github.com/rehypejs/rehype) MDX plugin for exposing the page 
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [API](#api)
   - [Options](#options)
     - [`name`](#name)
 - [Compatibility](#compatibility)
@@ -83,6 +84,8 @@ export default function MDXContent() {
 Use [`rehype-raw`](https://github.com/rehypejs/rehype-raw) if you wish to use custom `<h1>` headers.
 This only works if the MDX `format` option is set to `'md'`. Beware this also changes the MDX
 component output.
+
+## API
 
 ### Options
 
