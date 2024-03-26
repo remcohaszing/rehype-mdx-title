@@ -1,36 +1,23 @@
 import assert from 'node:assert/strict'
-import { readdir, readFile, writeFile } from 'node:fs/promises'
 import { test } from 'node:test'
 
-import { compile, compileSync } from '@mdx-js/mdx'
+import { compileSync } from '@mdx-js/mdx'
 import rehypeMdxTitle from 'rehype-mdx-title'
 import rehypeRaw from 'rehype-raw'
-import { read } from 'to-vfile'
+import { assertEqual, testFixturesDirectory } from 'snapshot-fixtures'
 
-const fixtureDir = new URL('../fixtures/', import.meta.url)
-const tests = await readdir(fixtureDir)
-
-for (const name of tests) {
-  test(name, async () => {
-    const path = new URL(`${name}/`, fixtureDir)
-    let input
-    try {
-      input = await read(new URL('input.mdx', path))
-    } catch {
-      input = await read(new URL('input.md', path))
+testFixturesDirectory({
+  directory: new URL('../fixtures', import.meta.url),
+  prettier: true,
+  tests: {
+    'expected.jsx'(file, options) {
+      return compileSync(file, {
+        rehypePlugins: [[rehypeMdxTitle, options]],
+        jsx: true
+      })
     }
-    const expected = new URL('expected.jsx', path)
-    const options = JSON.parse(await readFile(new URL('options.json', path), 'utf8'))
-    const { value } = await compile(input, {
-      rehypePlugins: [[rehypeMdxTitle, options]],
-      jsx: true
-    })
-    if (process.argv.includes('--write')) {
-      await writeFile(expected, value)
-    }
-    assert.equal(value, await readFile(expected, 'utf8'))
-  })
-}
+  }
+})
 
 test('invalid name', () => {
   assert.throws(
@@ -44,7 +31,7 @@ test('invalid name', () => {
 })
 
 test('combine with rehype-raw', () => {
-  assert.equal(
+  assertEqual(
     String(
       compileSync('<h1>Hello <span>World!</span></h1>', {
         format: 'md',
