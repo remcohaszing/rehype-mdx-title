@@ -1,4 +1,5 @@
-/*@jsxRuntime automatic @jsxImportSource react*/
+/*@jsxRuntime automatic*/
+/*@jsxImportSource react*/
 export const title = 'Hello '
 function _createMdxContent(props) {
   const _components = {

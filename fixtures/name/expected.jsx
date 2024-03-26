@@ -1,4 +1,5 @@
-/*@jsxRuntime automatic @jsxImportSource react*/
+/*@jsxRuntime automatic*/
+/*@jsxImportSource react*/
 export const pageTitle = 'Custom export name'
 function _createMdxContent(props) {
   const _components = {

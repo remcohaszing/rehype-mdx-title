@@ -39,7 +39,8 @@ test('combine with rehype-raw', () => {
         jsx: true
       })
     ),
-    `/*@jsxRuntime automatic @jsxImportSource react*/
+    `/*@jsxRuntime automatic*/
+/*@jsxImportSource react*/
 export const title = "Hello World!";
 function _createMdxContent(props) {
   const _components = {
