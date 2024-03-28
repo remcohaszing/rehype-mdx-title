@@ -28,7 +28,7 @@
   "scripts": {
     "prepack": "tsc --build",
     "pretest": "tsc --build",
-    "test": "c8 node --enable-source-maps dist/rehype-mdx-title.js"
+    "test": "c8 node --enable-source-maps dist/rehype-mdx-title.test.js"
   },
   "dependencies": {
     "@types/hast": "^3.0.0",
