@@ -13,7 +13,6 @@ A [rehype](https://github.com/rehypejs/rehype) MDX plugin for exposing the page 
 - [Usage](#usage)
 - [API](#api)
   - [Options](#options)
-    - [`name`](#name)
 - [Compatibility](#compatibility)
 - [License](#license)
 
@@ -25,8 +24,9 @@ npm install rehype-mdx-title
 
 ## Usage
 
-This plugins exports the page title as a string. If multiple level 1 headers are found, the first
-one in the document is used. The header is converted to a string using
+This plugins exports the page title as a string. If multiple matching headers are found, othe
+highest ranking header is used. If multiple headers are found with the same rank, the first one in
+the document is used. The header is converted to a string using
 [`mdast-util-to-string`](https://github.com/syntax-tree/mdast-util-to-string#readme)
 
 For example, given a file named `example.mdx` with the following contents:
@@ -89,9 +89,8 @@ component output.
 
 ### Options
 
-#### `name`
-
-The name of the variable to export the title as. (default: `'title'`)
+- `name` (`string`) — The name of the variable to export the title as. (default: `'title'`)
+- `maxRank` (`number`) — The maximum heading rank to consider. (default: `'1'`)
 
 ## Compatibility
 
