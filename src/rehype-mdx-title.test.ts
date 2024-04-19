@@ -26,7 +26,12 @@ test('invalid name', () => {
         rehypePlugins: [[rehypeMdxTitle, { name: 'Not valid' }]],
         jsx: true
       }),
-    new Error('The name should be a valid identifier name, got: "Not valid"')
+    (error) => {
+      assert(error instanceof Error)
+      assert.equal(error.message, 'The name should be a valid identifier name, got: "Not valid"')
+      assert.equal(error.cause, 'Not valid')
+      return true
+    }
   )
 })
 

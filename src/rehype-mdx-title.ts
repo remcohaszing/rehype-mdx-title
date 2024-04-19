@@ -34,7 +34,9 @@ const rehypeMdxTitle: Plugin<[RemarkMdxTitleOptions?], Root> = ({
   name = 'title'
 } = {}) => {
   if (!isIdentifierName(name)) {
-    throw new Error(`The name should be a valid identifier name, got: ${JSON.stringify(name)}`)
+    throw new Error(`The name should be a valid identifier name, got: ${JSON.stringify(name)}`, {
+      cause: name
+    })
   }
 
   return (ast) => {
