@@ -9,7 +9,7 @@ export interface RemarkMdxTitleOptions {
   /**
    * The variable to export the title as.
    *
-   * @default title
+   * @default 'title'
    */
   name?: string
 
