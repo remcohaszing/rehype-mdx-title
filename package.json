@@ -1,6 +1,6 @@
 {
   "name": "rehype-mdx-title",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "A rehype MDX plugin for exposing the page title",
   "main": "./dist/rehype-mdx-title.js",
   "exports": "./dist/rehype-mdx-title.js",
