@@ -90,7 +90,7 @@ component output.
 ### Options
 
 - `name` (`string`) — The name of the variable to export the title as. (default: `'title'`)
-- `maxRank` (`number`) — The maximum heading rank to consider. (default: `'1'`)
+- `maxRank` (`number`) — The maximum heading rank to consider. (default: `1`)
 
 ## Compatibility
 
