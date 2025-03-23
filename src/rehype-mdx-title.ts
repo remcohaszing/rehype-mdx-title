@@ -1,11 +1,11 @@
-import { name as isIdentifierName } from 'estree-util-is-identifier-name'
 import { type Element, type Root } from 'hast'
 import { headingRank } from 'hast-util-heading-rank'
 import { toString } from 'hast-util-to-string'
 import { type Plugin } from 'unified'
+import { define } from 'unist-util-mdx-define'
 import { EXIT, visitParents } from 'unist-util-visit-parents'
 
-export interface RemarkMdxTitleOptions {
+export interface RemarkMdxTitleOptions extends define.Options {
   /**
    * The variable to export the title as.
    *
@@ -29,17 +29,9 @@ export interface RemarkMdxTitleOptions {
  * @returns
  *   A unified transformer.
  */
-const rehypeMdxTitle: Plugin<[RemarkMdxTitleOptions?], Root> = ({
-  maxRank = 1,
-  name = 'title'
-} = {}) => {
-  if (!isIdentifierName(name)) {
-    throw new Error(`The name should be a valid identifier name, got: ${JSON.stringify(name)}`, {
-      cause: name
-    })
-  }
-
-  return (ast) => {
+const rehypeMdxTitle: Plugin<[RemarkMdxTitleOptions?], Root> =
+  ({ maxRank = 1, name = 'title', ...options } = {}) =>
+  (ast, file) => {
     let heading: Element | undefined
     let bestRank = maxRank + 1
 
@@ -56,36 +48,8 @@ const rehypeMdxTitle: Plugin<[RemarkMdxTitleOptions?], Root> = ({
     })
 
     if (heading) {
-      ast.children.unshift({
-        type: 'mdxjsEsm',
-        value: '',
-        data: {
-          estree: {
-            type: 'Program',
-            sourceType: 'module',
-            body: [
-              {
-                type: 'ExportNamedDeclaration',
-                source: null,
-                specifiers: [],
-                declaration: {
-                  type: 'VariableDeclaration',
-                  kind: 'const',
-                  declarations: [
-                    {
-                      type: 'VariableDeclarator',
-                      id: { type: 'Identifier', name },
-                      init: { type: 'Literal', value: toString(heading) }
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        }
-      })
+      define(ast, file, { [name]: { type: 'Literal', value: toString(heading) } }, options)
     }
   }
-}
 
 export default rehypeMdxTitle

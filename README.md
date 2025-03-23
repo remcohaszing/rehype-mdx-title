@@ -92,6 +92,9 @@ component output.
 - `name` (`string`) — The name of the variable to export the title as. (default: `'title'`)
 - `maxRank` (`number`) — The maximum heading rank to consider. (default: `1`)
 
+In addition it supports `unist-util-mdx-define`
+[options](https://github.com/remcohaszing/unist-util-mdx-define#options).
+
 ## Compatibility
 
 This project is compatible with Node.js 16 or greater.

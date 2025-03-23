@@ -1,4 +1,3 @@
-import assert from 'node:assert/strict'
 import { test } from 'node:test'
 
 import { compileSync } from '@mdx-js/mdx'
@@ -17,22 +16,6 @@ testFixturesDirectory({
       })
     }
   }
-})
-
-test('invalid name', () => {
-  assert.throws(
-    () =>
-      compileSync('# foo', {
-        rehypePlugins: [[rehypeMdxTitle, { name: 'Not valid' }]],
-        jsx: true
-      }),
-    (error) => {
-      assert(error instanceof Error)
-      assert.equal(error.message, 'The name should be a valid identifier name, got: "Not valid"')
-      assert.equal(error.cause, 'Not valid')
-      return true
-    }
-  )
 })
 
 test('combine with rehype-raw', () => {
