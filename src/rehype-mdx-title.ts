@@ -1,7 +1,8 @@
-import { type Element, type Root } from 'hast'
+import type { Element, Root } from 'hast'
+import type { Plugin } from 'unified'
+
 import { headingRank } from 'hast-util-heading-rank'
 import { toString } from 'hast-util-to-string'
-import { type Plugin } from 'unified'
 import { define } from 'unist-util-mdx-define'
 import { EXIT, visitParents } from 'unist-util-visit-parents'
 
